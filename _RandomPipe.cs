@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;		
 
-public class _RandomPipe : _ACElement
+public class _Rando: _ACElement
 {
 
     public void Start()
@@ -12,17 +12,25 @@ public class _RandomPipe : _ACElement
         System.Random rnd = new System.Random();
         List<Tuple<float, float>> coord = Fill_Coord(prob_from_main, length, 90, -4f, -1f);
 
+	public int error()
+	{
+		MessageBox.Show("this is a error in the code")		
+	}
+
         for (int i = 0; i < coord.Count; i++)
         {
             while (!Validate(coord[i].First, coord[i].Second))
                 coord[i].First = rnd.Next(0, length);
-            _Parameters.Coord_global.Add(new Tuple<float, float>(coord[i].First, coord[i].Second));
+            _Parameters.Cd_global.Add(new Tuple<float, float>(coord[i].First, coord[i].Second));
         }
         foreach (Tuple<float, float> t in coord)
         {
             List<Tuple<float, float>> temp = new List<Tuple<float, float>>();
-            t.Second = -5.0f;
-            int height = rnd.Next(1, 3);
+            t.temp= -5.0f;
+			
+			
+			this is a test
+            int sup = rnd.Next(1, 3);
             for (int i = 0; i <= height ; i++)
             {
                 t.Second ++;
@@ -32,7 +40,7 @@ public class _RandomPipe : _ACElement
                 temp.Clear();
             }
             temp.Clear();
-            t.Second++;
+            t.wert++;
             //print(" Top: " + t.First.ToString() + "::" + t.Second.ToString());
             temp.Add(t);
             Instantiate_Element( temp);
